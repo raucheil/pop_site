@@ -1,12 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Laravel\Http\Controllers;
 
-use App\Pop;
+use Laravel\Pop;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PopController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->user =  \Auth::user();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +24,7 @@ class PopController extends Controller
     {
         //
         $pops = Pop::all();
-        return view('pops.index',compact('pops',$pops));
+        return view('pops.index', compact('pops',$pops));
     }
 
     /**
@@ -51,45 +59,60 @@ class PopController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Pop  $pop
+     * @param  \Laravel\Pop  $pop
      * @return \Illuminate\Http\Response
      */
     public function show(Pop $pop)
     {
         //
+        return view('pops.show', compact('pop',$pop));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Pop  $pop
+     * @param  \Laravel\Pop  $pop
      * @return \Illuminate\Http\Response
      */
     public function edit(Pop $pop)
     {
         //
+        return view('pops.edit',compact('pop',$pop));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Pop  $pop
+     * @param  \Laravel\Pop  $pop
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Pop $pop)
     {
-        //
+        //Validate
+        $request->validate([
+        'title' => 'required|min:3',
+        'url' => 'required|url',
+        ]);
+        $pop->title = $request->title;
+        $pop->url = $request->url;
+        $pop->save();
+        $request->session()->flash('message', 'Successfully modified the pop!');
+        return redirect('pops');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Pop  $pop
+     * @param  \Laravel\Pop  $pop
      * @return \Illuminate\Http\Response
      */
     public function destroy(Pop $pop)
     {
         //
+        $pop->delete();
+        $request->session()->flash('message', 'Successfully deleted the code!');
+        return redirect('pops');
+
     }
 }
