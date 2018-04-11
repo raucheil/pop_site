@@ -1,0 +1,295 @@
+// variable
+/* HSL */
+$grey: hsla(226%, 13%, 38%, 1);
+$cream: hsla(65%, 43%, 95%, 1);
+$azure: hsla(207%, 54%, 51%, 1);
+$white: hsla(348%, 100%, 99%, 1);
+
+/* RGB */
+$grey: rgba(85, 91, 110, 1);
+$cream: rgba(246, 247, 235, 1);
+$green: #5CB75C;
+$azure:#2e57a6;
+$white: #fff;
+
+
+$base:20px;
+
+
+// Button Colors
+$btn-default-color: #000;
+$btn-default-bg: $grey;
+$brand-primary:$green;
+
+// Toggle Sizes
+$toggle-default-size: 1.5rem;
+$toggle-default-label-width: 4rem;
+$toggle-default-font-size: 0.75rem;
+
+body{
+    background: $white;
+}
+
+nav{
+    background:$azure;
+}
+
+footer{
+    background: $grey;
+}
+div{
+&.list-group-item{
+      margin:$base/2;
+      margin-left:0;
+      border:0;
+      background: none;
+      &.active, &.active:hover,&.active:focus{
+          background: none;
+          border: 0;
+  
+      }
+      &:hover, &:focus{
+          background: none;
+          cursor: all-scroll;       
+          .badge
+          {box-shadow:0 0 1px rgba(63, 136, 197, 0.8), 0 1px 2px rgba(63, 136, 197, 0.5), 0 8px 50px rgba(63, 136, 197, 0.3);
+          }
+      }
+      .badge{
+          transition: box-shadow 0.2s linear;
+      }
+  
+      &.ignore-elements{
+          opacity: 0.5; 
+          -webkit-filter: grayscale(80%); /* Safari 6.0 - 9.0 */
+          filter: grayscale(80%);
+          &:hover, &:focus{
+              background: none;
+              cursor: not-allowed;  
+          } 
+      }
+      // padding:$base;
+  }
+}
+  
+  /*** sortable ***/
+  .border-placeholder{
+      background: $grey;
+      content: '&nbsp;';
+      border:1px solid $grey;
+  
+  }
+  
+  
+  // *** badge *** //
+  .alertify-notifier .ajs-message,.alertify-notifier .ajs-success {
+      background: none;
+      border: 0;
+      text-shadow: none;
+  }
+  
+  .badge {
+      pointer-events: auto;
+      overflow: hidden;
+      position: relative;
+      height: 70px;
+      width: 100%; 
+      background-color: #fff;
+      padding: 10px;
+      box-sizing: border-box;
+      line-height: 1em;
+      // width: 320px;
+      margin: 0 0 10px 10px;
+      border-radius: 50px;
+      box-shadow: 0 0 1px rgba(0, 0, 0, .2), 0 1px 2px rgba(0, 0, 0, .05), 0 8px 50px rgba(0, 0, 0, .05);
+  }
+  
+  .badge_img {
+      display: block;
+      position: absolute;
+      float: left;
+      top: 3px;
+      left: 3px;
+      height: 64px;
+      width: 64px;
+  }
+  
+  .badge_img img {
+      display: block;
+      height: 64px;
+      width: 64px;
+  }
+  
+  .badge_text {
+      margin-left: 70px;
+      padding-right: 4px;
+  }
+  
+  .badge_text_title {
+      line-height: 17.5px;
+      font-size: 10px;
+      color: #6d6d6d;
+      text-align: left;
+      display: block;
+      text-overflow: ellipsis;
+      white-space:pre-wrap;
+  }
+  
+  .badge_text_1 {
+      line-height: 1.2 rem;
+      display: inline-block;
+      color: #333;
+      font-weight: bolder;
+      font-size: 12px;
+      text-align: left;
+      display: block;
+      text-overflow: ellipsis;
+      white-space: pre-wrap;
+  }
+  
+  // Mixin for Default Switch Styles
+  
+  @mixin toggle-color($color: $btn-default-color, $bg: $btn-default-bg, $active-bg: $brand-primary) {
+      color: $color;
+      background: $bg;
+      &:before,
+      &:after {
+        color: $color;
+      }
+      &.active {
+        background-color: $active-bg;
+      }
+    }
+  
+  // Variables: $size, $margin, $color, $bg, $active-bg, $font-size
+  @mixin toggle($size: $toggle-default-size, $margin: $toggle-default-label-width, $font-size: $toggle-default-font-size) {
+      // color: $color;
+      // background: $bg;
+      margin: 0 $margin;
+      padding: 0;
+      position: relative;
+      border: none;
+      height: $size;
+      width: $size * 2;
+      border-radius: $size;
+    
+      &:focus,
+      &.focus {
+        &,
+        &.active {
+          outline: none;
+        }
+      }
+    
+      &:before,
+      &:after {
+        line-height: $size;
+        width: $margin;
+        text-align: center;
+        font-weight: 600;
+        // color: $color;
+        font-size: $font-size;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: absolute;
+        bottom: 0;
+        transition: opacity 0.25s;
+      }
+      &:before {
+        content: "Off";
+        left: -$margin;
+      }
+      &:after {
+        content: "On";
+        right: -$margin;
+        opacity: 0.5;
+      }
+    
+      > .handle {
+        position: absolute;
+        top: ($size * 0.25) / 2;
+        left: ($size * 0.25) / 2;
+        width: $size * 0.75;
+        height: $size * 0.75;
+        border-radius: $size * 0.75;
+        background: #fff;
+        transition: left 0.25s;
+      }
+      &.active {
+        transition: background-color 0.25s;
+        > .handle {
+          left: $size + (($size * 0.25) / 2);
+          transition: left 0.25s;
+        }
+        &:before {
+          opacity: 0.5;
+        }
+        &:after {
+          opacity: 1;
+        }
+      }
+    
+      &.btn-sm {
+        &:before,
+        &:after {
+          line-height: $size - 2;
+          color: #fff;
+          letter-spacing: 0.75px;
+          left: $size * 0.275;
+          width: $size * 1.55;
+        }
+        &:before {
+          text-align: right;
+        }
+        &:after {
+          text-align: left;
+          opacity: 0;
+        }
+        &.active {
+          &:before {
+            opacity: 0;
+          }
+          &:after {
+            opacity: 1;
+          }
+        }
+      }
+    
+      &.btn-xs {
+        &:before,
+        &:after {
+          display: none;
+        }
+      }
+    }
+    
+    // Apply Mixin to different sizes & colors
+    .btn-toggle {
+      float:right;
+      @include toggle();
+      @include toggle-color();
+    
+      &.btn-lg {
+        @include toggle($size: 2.5rem, $font-size: 1rem, $margin: 5rem);
+      }
+    
+      &.btn-sm {
+          @include toggle($font-size: 0.55rem, $margin: 0.5rem);
+      }
+    
+      &.btn-xs {
+         @include toggle($size:1rem,$margin:0);
+      }
+    
+      &.btn-secondary {
+         @include toggle-color($active-bg:$azure );
+      }
+    }
+  
+  /*** code ***/
+    code {
+      background: $white;
+      color:$grey;
+      display: block;
+      white-space: pre-wrap;
+    }

@@ -15,6 +15,8 @@ class AddVotesToPopsTable extends Migration
     {
         Schema::table('pops', function (Blueprint $table) {
             $table->string('title')->nullable();
+            $table->string('user_id')->nullable();
+            $table->string('url')->nullable();
         });
     }
 

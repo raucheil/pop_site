@@ -104,6 +104,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'user_id' => [
+            'unique' => 'it \'s unique',
+        ],
     ],
 
     /*

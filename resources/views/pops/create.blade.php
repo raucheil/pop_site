@@ -116,6 +116,9 @@
                         <label for="description">Pops url</label>
                         <input type="text" class="form-control" id="popurl" name="url">
                         </div>
+                        <div class="form group">
+                            <input type="hidden" id="options" name="options" value='[{"sd":1,"od":1,"ac":1,"ur":""},{"sd":2,"od":2,"ac":1,"ur":""},{"sd":3,"od":3,"ac":1,"ur":""},{"sd":4,"od":4,"ac":1,"ur":""},{"sd":5,"od":5,"ac":1,"ur":""},{"sd":6,"od":6,"ac":1,"ur":""}]'>
+                        </div>
                         @if ($errors->any())
                         <div class="alert alert-danger">
                         <ul>
