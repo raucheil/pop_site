@@ -1,6 +1,7 @@
 
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
+// window.ToggleButton = require('vue-js-toggle-button');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support

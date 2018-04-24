@@ -1,12 +1,12 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
-// Variables
-@import "variables";
+@import url('https://fonts.googleapis.com/css?family=Arvo:400,400i,700,700i|Righteous');
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Variables
+@import "variables";
 
 .navbar-laravel {
   background-color: #fff;
@@ -14,10 +14,15 @@
 }
 
 
-
+// @import body
 body{
-  background: #fff;
+  background: $body-bg;
+  font-family: $font-body;
 }
 
-
+// @import login_page
 @import "login_page";
+
+
+// @import view_page
+@import "view_page";

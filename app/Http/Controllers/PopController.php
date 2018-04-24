@@ -52,9 +52,10 @@ class PopController extends Controller
         
         $pops = Pop::where('user_id', '=', $request->user()->id)->first();
         if ($pops) {
-            // $errors->add('baz', 'FAIL!');
-            // return back()->withErrors($errors);
-            return back()->withErrors(['only one code is available for this account']);
+            // return back()->withErrors(['only one code is available for this account']);
+            return response()->json([
+                    'Iderr' => 'only one code is available for this account',
+                ]);
         }
 
         $request->validate([
@@ -68,6 +69,16 @@ class PopController extends Controller
        
 
         $pops = Pop::create(['user_id'=> $request->user()->id,'title' => $request->title,'url'=> $request->url,'options' => $request->options]);
+
+        if ($pops) {
+            // return back()->withErrors(['only one code is available for this account']);
+            return response()->json([
+                    'ok_message' => 'ok create',
+                ]);
+        }
+        // return response()->json([
+        //     'message' => 'You are logged in !',
+        // ]);
         return redirect('/pops/'.$pops->id);
     }
 

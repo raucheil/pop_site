@@ -2,14 +2,15 @@
 @section('content') 
 <div class="container">
 @if (Session::has('message'))
+
 <div class="alert alert-info">{{ Session::get('message') }}</div>
 @endif
     <table class="table">
-        <thead class="thead-dark">
-            <tr>
+        <thead class="thead">
+            <tr >
                 <th scope="col">#</th>
-                <th scope="col">pop Title</th>
-                <th scope="col">pop url</th>
+                <th scope="col">Title</th>
+                <th scope="col">Domain</th>
                 <th scope="col">Created At</th>
                 <th scope="col">Action</th>
             </tr>
@@ -43,6 +44,5 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <a class="btn btn-default" href="/pops/create" role="button">{{ __('New Code') }}</a>
     </div>
-    
 @endsection
 </div>
